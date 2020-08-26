@@ -24,15 +24,15 @@ io.on('connection', (client) => {
 
     client.on('atenderTicket', (data, callback) => {
 
-        if (!data.escritorio) {
+        if (!data.modulo) {
             return callback({
                 err: true,
-                mensaje: 'El escritorio es necesario'
+                mensaje: 'El modulo es necesario'
             });
         }
 
 
-        let atenderTicket = ticketControl.atenderTicket(data.escritorio);
+        let atenderTicket = ticketControl.atenderTicket(data.modulo);
 
 
         callback(atenderTicket);

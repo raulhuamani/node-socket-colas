@@ -4,22 +4,22 @@ var socket = io();
 
 var searchParams = new URLSearchParams(window.location.search);
 
-if (!searchParams.has('escritorio')) {
+if (!searchParams.has('modulo')) {
     window.location = 'index.html';
-    throw new Error('El escritorio es necesario');
+    throw new Error('El modulo es necesario');
 }
 
-var escritorio = searchParams.get('escritorio');
+var modulo = searchParams.get('modulo');
 var label = $('small');
 
-console.log(escritorio);
-$('h1').text('Escritorio ' + escritorio);
+console.log(modulo);
+$('h1').text('Modulo ' + modulo);
 
 
 // Evento listener del boton
 $('button').on('click', function() {
 
-    socket.emit('atenderTicket', { escritorio: escritorio }, function(resp) {
+    socket.emit('atenderTicket', { modulo: modulo }, function(resp) {
 
         if (resp === 'No hay tickets') {
             label.text(resp);

@@ -2,10 +2,10 @@ const fs = require('fs');
 
 class Ticket {
 
-    constructor(numero, escritorio) {
+    constructor(numero, modulo) {
 
         this.numero = numero;
-        this.escritorio = escritorio;
+        this.modulo = modulo;
 
     }
 
@@ -56,7 +56,7 @@ class TicketControl {
         return this.ultimos4;
     }
 
-    atenderTicket(escritorio) {
+    atenderTicket(modulo) {
 
         if (this.tickets.length === 0) {
             return 'No hay tickets'
@@ -65,7 +65,7 @@ class TicketControl {
         let numeroTicket = this.tickets[0].numero;
         this.tickets.shift(); // y borramos el primer elemento del arreglo (shift)
 
-        let atenderTicket = new Ticket(numeroTicket, escritorio);
+        let atenderTicket = new Ticket(numeroTicket, modulo);
         // agregamos el ticket al inicio del arreglo (unshift)
         this.ultimos4.unshift(atenderTicket);
 
